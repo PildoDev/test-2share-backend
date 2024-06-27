@@ -36,7 +36,7 @@ export class UsersController {
       });
     } catch (error) {
       if (error instanceof BadRequestException) {
-        return res.status(HttpStatus.BAD_REQUEST).json({
+        return res.status(HttpStatus.OK).json({
           message: error.message,
         });
       } else if (error instanceof InternalServerErrorException) {
