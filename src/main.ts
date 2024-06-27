@@ -6,12 +6,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const options = new DocumentBuilder()
-    .setTitle('arquetipo-nest-postgres')
+    .setTitle('archetype-nest-postgres-2share')
     .setDescription(
-      'This arquetype is for microservices with nestjs and postgres',
+      'This archetype is for microservices with nestjs and postgres for 2share test',
     )
     .setVersion('1.0')
-    .addTag('arquetipo-nest-postgres')
+    .addTag('archetype-nest-postgres-2share')
     .build();
 
   app.enableCors({
@@ -31,7 +31,7 @@ async function bootstrap() {
   });
 
   console.log(
-    'Application successfully started, runing in port: ' + process.env.PORT ||
+    'Application successfully started, running in port: ' + process.env.PORT ||
       3000,
   );
   await app.listen(process.env.PORT || 3000);

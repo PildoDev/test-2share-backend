@@ -16,8 +16,8 @@ export class UsersEntity {
     description: 'Name of the user',
     required: true,
   })
-  @Column('character varying', { name: 'name', nullable: false })
-  name: string;
+  @Column('character varying', { name: 'fullname', nullable: false })
+  fullname: string;
 
   @ApiProperty({
     example: 'johndoe@email.com',
