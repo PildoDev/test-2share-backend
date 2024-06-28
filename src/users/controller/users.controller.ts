@@ -13,7 +13,6 @@ import { UsersEntity } from '../entities/users.entity';
 import { Response } from 'express';
 import { RegisterUserOutputDto } from '../dto/registerUserResponse.dto';
 import { RegisterUserInputDto } from '../dto/registerUserInput.dto';
-import { error } from 'console';
 
 @ApiTags('Auth')
 @Controller('/api/users')

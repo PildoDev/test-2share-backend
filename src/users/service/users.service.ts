@@ -22,7 +22,7 @@ export class UsersService {
   ): Promise<RegisterUserOutputDto | string> {
     const validateUser: UsersEntity = await this.repository.findOne({
       where: {
-        email: body.email,
+        uUserEmail: body.email,
         deletedAt: null,
       },
     });
@@ -36,15 +36,16 @@ export class UsersService {
       const salt = await bcrypt.genSalt(saltRounds);
       const hashPassword = await bcrypt.hash(body.password, salt);
       const newUser = this.repository.create({
-        ...body,
-        password: hashPassword,
+        uUserEmail: body.email,
+        uUserFullname: body.fullname,
+        uUserPassword: hashPassword,
       });
       try {
         const response = await this.repository.save(newUser);
         return {
-          id: response.id,
-          fullname: response.fullname,
-          email: response.email,
+          id: response.uUserId,
+          fullname: response.uUserFullname,
+          email: response.uUserEmail,
         };
       } catch (error) {
         throw new InternalServerErrorException(error.message);

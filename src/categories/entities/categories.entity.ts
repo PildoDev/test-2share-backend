@@ -10,46 +10,40 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('TBL_users', { schema: 'grocery_sch' })
-export class UsersEntity {
-  // uUserId
+@Entity('TBL_categories', { schema: 'grocery_sch' })
+export class CategoriesEntity {
+  // cCategoryId
   @ApiProperty({
     example: '123',
     description: 'The unique ID for the table, is auto generated',
     required: false,
   })
-  @PrimaryGeneratedColumn({ type: 'bigint', name: 'uUserId' })
-  uUserId: number;
+  @PrimaryGeneratedColumn({ type: 'bigint', name: 'cCategoryId' })
+  cCategoryId: number;
 
-  // uUserFullname
+  // cCategoryName
   @ApiProperty({
-    example: 'John Doe',
-    description: 'Name of the user',
+    example: 'Fruits',
+    description: 'Name of the category of the groceries.',
     required: true,
   })
-  @Column('character varying', { name: 'uUserFullname', nullable: false })
-  uUserFullname: string;
+  @Column('character varying', { name: 'cCategoryName', nullable: false })
+  cCategoryName: string;
 
-  // uUserEmail
+  // cCategoryDescription
   @ApiProperty({
-    example: 'johndoe@email.com',
-    description: 'Email of the user',
+    example: 'Fresh and seasonal fruits.',
+    description: 'Description of the category of the groceries',
     required: true,
   })
-  @Column('character varying', { name: 'uUserEmail', nullable: false })
-  uUserEmail: string;
-
-  // uUserPassword
-  @ApiProperty({
-    example: 'password123',
-    description: 'Password of the user',
-    required: true,
+  @Column('character varying', {
+    name: 'cCategoryDescription',
+    nullable: false,
   })
-  @Column('character varying', { name: 'uUserPassword', nullable: false })
-  uUserPassword: string;
+  cCategoryDescription: string;
 
   // groceriesEntity
-  @OneToMany(() => GroceriesEntity, (grocery) => grocery.gGroceryOwner)
+  @OneToMany(() => GroceriesEntity, (grocery) => grocery.gGroceryCategory)
   groceries: GroceriesEntity[];
 
   // createdAt

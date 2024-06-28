@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
+import { GroceriesModule } from './groceries/groceries.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -17,7 +19,9 @@ import { UsersModule } from './users/users.module';
       autoLoadEntities: true,
       synchronize: true, //Do not use true in production
     }),
-    UsersModule
+    UsersModule,
+    CategoriesModule,
+    GroceriesModule,
   ],
   controllers: [],
   providers: [],
